@@ -1,20 +1,19 @@
 package com.example.demo.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.GetMapping;
 
-@RestController
+@Controller
 public class testController {
 	
-	@RequestMapping("/home")
+	@GetMapping("/home")
 	public String main() {
 		return "index.html";
 	}
 	
-	@RequestMapping("/another")
+	@GetMapping("/info_pop")
 	public String home() {
-		return "myTest.html";
+		return "info_pop_main.html";
 	}
 
 }
