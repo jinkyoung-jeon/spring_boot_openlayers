@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.demo.persistence.BikeMapper">
+
+	<select id="getList" parameterType="bike" resultType="bike">
+		/* getList
+		*/
+		select
+			br_name,
+			br_classification,
+			name_address,
+			number_address,
+			lat,
+			lon,
+			start_time
+			end_time,
+			closed_day,
+			fee,
+			utilization_fee,
+			holding_number,
+			bikehold_number,
+			bicycle_pump,
+			bicycle_pump_type,
+			bicycle_repairer,
+			agency_phone_number,
+			agency_name,
+			data_date,
+			organization_code,
+			organization_name
+		from bike_rental
+	</select>
+
+</mapper>

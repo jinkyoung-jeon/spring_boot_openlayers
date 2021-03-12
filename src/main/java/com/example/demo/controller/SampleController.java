@@ -22,7 +22,7 @@ public class SampleController {
     SampleService sampleService;
 
     @GetMapping("/list")
-    public ResponseEntity<?> getRtlsListAll(HttpServletRequest request) {
+    public ResponseEntity<?> getList(HttpServletRequest request) {
         try {
             List<Sample> list = sampleService.getList(new Sample());
             return new ResponseEntity<>(list, HttpStatus.OK);
