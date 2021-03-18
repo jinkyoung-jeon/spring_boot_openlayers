@@ -5,9 +5,13 @@
 
     <select id="getList" parameterType="sample" resultType="sample">
         /* getList */
-        SELECT
-            'k' as name,
-            10 age
+        select
+            gid,
+            ctprvn_cd,
+            ctp_eng_nm,
+            ctp_kor_nm,
+            geom
+        from korea_city
     </select>
 
 </mapper>

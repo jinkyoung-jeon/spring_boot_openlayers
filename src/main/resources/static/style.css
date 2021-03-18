@@ -1,10 +1,21 @@
 /* css/style.css */
-
 #map {
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	float: left;
+	width: 1200px;
+	height: 700px;
+	position: relative;
+	z-index: 1;
 }
 
+#getInfo {
+	display: inline-block;
+/* 	height: 700px; */
+	background-color: #f7cac9;
+	margin-left: 10px;
+	position: absolute;
+	z-index: 2;
+}

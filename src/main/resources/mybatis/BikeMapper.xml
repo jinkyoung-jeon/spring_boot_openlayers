@@ -7,27 +7,30 @@
 		/* getList
 		*/
 		select
+			id,
+			geom,
 			br_name,
 			br_classification,
 			name_address,
 			number_address,
 			lat,
 			lon,
-			start_time
+			start_time,
 			end_time,
 			closed_day,
 			fee,
 			utilization_fee,
 			holding_number,
 			bikehold_number,
-			bicycle_pump,
-			bicycle_pump_type,
-			bicycle_repairer,
+			bike_pump,
+			bike_pump_type,
+			bike_repairer,
 			agency_phone_number,
 			agency_name,
 			data_date,
 			organization_code,
-			organization_name
+			organization_name,
+			geom
 		from bike_rental
 	</select>
 
