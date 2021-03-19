@@ -22,9 +22,9 @@ public class SampleController {
     SampleService sampleService;
 
     @GetMapping("/list")
-    public ResponseEntity<?> getList(HttpServletRequest request) {
+    public ResponseEntity<?> getList(Sample sample) {
         try {
-            List<Sample> list = sampleService.getList(new Sample());
+            List<Sample> list = sampleService.getList(sample);
             return new ResponseEntity<>(list, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);

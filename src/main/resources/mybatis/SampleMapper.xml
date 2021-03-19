@@ -9,9 +9,11 @@
             gid,
             ctprvn_cd,
             ctp_eng_nm,
-            ctp_kor_nm,
-            geom
+            ctp_kor_nm
         from korea_city
+        <if test="gid != null and gid !=''">
+        	where gid = #{gid}
+        </if>
     </select>
 
 </mapper>
