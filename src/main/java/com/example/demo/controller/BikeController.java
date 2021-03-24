@@ -32,9 +32,9 @@ public class BikeController {
 	BikeService bikeService;
 	
 	@GetMapping("/list")
-	public ResponseEntity<?> getList(HttpServletRequest request) {
+	public ResponseEntity<?> getList(Bike bike) {
 		try {
-			List<Bike> list = bikeService.getList(new Bike());
+			List<Bike> list = bikeService.getList(bike);
 			return new ResponseEntity<>(list, HttpStatus.OK);
 		} catch (Exception e) {
 			return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);

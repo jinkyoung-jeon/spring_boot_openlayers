@@ -8,7 +8,6 @@
 		*/
 		select
 			id,
-			geom,
 			br_name,
 			br_classification,
 			name_address,
@@ -32,6 +31,9 @@
 			organization_name,
 			geom
 		from bike_rental
+		<if test="organizationName != null and organizationName !=''">
+        	where organization_name = #{organizationName}
+        </if>
 	</select>
 
 </mapper>
