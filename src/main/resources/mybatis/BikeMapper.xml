@@ -30,7 +30,8 @@
 			organization_code,
 			organization_name,
 			geom
-		from bike_rental
+		from bike_rental 
+		limit 20
 		<if test="organizationName != null and organizationName !=''">
         	where organization_name = #{organizationName}
         </if>

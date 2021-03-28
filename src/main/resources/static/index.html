@@ -6,7 +6,6 @@
 
 <title>index.html</title>
 
-
 <!-- OpenLayers CDN -->
 <script
 	src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v6.1.1/build/ol.js"></script>
@@ -15,12 +14,20 @@
 
 <!-- Pointer events polyfill for old browsers, see https://caniuse.com/#feat=pointer -->
 <script src="https://unpkg.com/elm-pep"></script>
-
 <link rel="stylesheet" href="style.css">
 
 <!-- jquery CDN -->
 <script
 	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<!-- Jquery ui dialog -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<link rel="stylesheet"
+	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <!-- dialog 라이브러리 -->
+    <script type="text/javascript" src="https://nowonbun.github.io/Loader/dialog.js"></script>
 
 <!-- Font Awesome -->
 <link
@@ -35,6 +42,8 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.3.0/mdb.min.css"
 	rel="stylesheet" />
 
+
+
 </head>
 
 <body>
@@ -46,52 +55,46 @@
 			<div class="d-flex justify-content-center align-items-center h-100">
 				<div class="text-white">
 					<h1 class="mb-3">Bike Road</h1>
-					<a class="btn btn-outline-light btn-lg" href="#bikePage"
+					<a class="btn btn-outline-light btn-lg" href="#mapPage"
 						role="button">Are you ready?</a>
 				</div>
 			</div>
 		</div>
 	</div>
 
-
-	<div id="bikePage">
+	<div id="mapPage">
 		<div id="map" class="map">
-			<button id="pgActionbtn" onclick="pageAction()">두번째 페이지 열기</button>
-
-			<!-- 페이지 합칠 때 getInfo 페이지 넣을 자리 -->
-
-		</div>
-
-		<div id="getInfo" class="getInfo" style="display: none">
-			<p>여기는 map 두번째 페이지입니다.</p>
-			<button id="getAddress">주소보기</button>
-			<div>
-				<form class="form-inline">
-					<label for="type">Action type &nbsp;</label> <select id="type"
-						class="form-control">
-						<option value="click" selected>Click</option>
-						<option value="singleclick">Single-click</option>
-						<option value="pointermove">Hover</option>
-						<option value="altclick">Alt+Click</option>
-						<option value="none">None</option>
-					</select> <span id="status">&nbsp;0 selected features</span>
-				</form>
-			</div>
-			<div id="ajpage" class="ajpage">
-				<li>지역을 선택해주세요</li>
-				<ul id="area"></ul>
+			<div id="getInfo" class="getInfo">
+				<div>
+					<form class="form-inline">
+					</br>
+						<label for="type">선택 타입&nbsp;</label> <select id="type"
+							class="form-control">
+							<option value="click" selected>Click</option>
+							<option value="singleclick">Single-click</option>
+							<option value="pointermove">Hover</option>
+							<option value="altclick">Alt+Click</option>
+							<option value="none">None</option>
+						</select> 
+						<span id="status">&nbsp;</span>
+					</form>
+				</div>
+				</br>
+				<div id="ajpage" class="ajpage">
+					<h>대여소를 선택해주세요</h>
+					<ul id="area"></ul>
+				</div>
 			</div>
 		</div>
 	</div>
-	
+
 	<div id="info">&nbsp;</div>
+
 	<script src="map.js"></script>
 
-
-
-
-
 </body>
+
+
 
 </html>
 

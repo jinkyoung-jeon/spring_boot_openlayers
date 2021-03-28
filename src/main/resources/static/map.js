@@ -14,12 +14,12 @@ var wmsLayer = new ol.layer.Tile({
 });
 
 
-/* select 하기 위한 지도 좌표값*/
+/* select 하기 위한 지도 좌표값 geojson으로 가져옴*/
 var vector = new ol.layer.Vector({
 	source: new ol.source.Vector({
 		url: 'countries.geojson',
 		format: new ol.format.GeoJSON(),
-	}), 
+	}),
 });
 
 
@@ -74,9 +74,6 @@ map.on('pointermove', function(evt) {
 });
 
 
-
-
-
 /* 지도 feature select 하는 부분*/
 
 var select = null; //ref to currently selected interaction
@@ -125,11 +122,7 @@ var changeInteraction = function() {
 			document.getElementById('status').innerHTML =
 				'&nbsp;' +
 				e.target.getFeatures().getLength() +
-				' selected features (last operation selected ' +
-				e.selected.length +
-				' and deselected ' +
-				e.deselected.length +
-				' features)';
+				' 개 선택됨';
 		});
 	}
 };
@@ -144,8 +137,8 @@ changeInteraction();
 /* ajax를 이용한 주소 호출*/
 
 $.ajax({
-	url: "/sample/list", // 클라이언트가 HTTP 요청을 보낼 서버의 URL 주소 
-	//data: { organizationName: "강원도 강릉시" }, // HTTP 요청과 함께 서버로 보낼 데이터 
+	url: "/bike/list", // 클라이언트가 HTTP 요청을 보낼 서버의 URL 주소 
+//	data: {gid : 1}, // HTTP 요청과 함께 서버로 보낼 데이터 
 	method: "GET", // HTTP 요청 메소드(GET, POST 등) 
 	dataType: "json" // 서버에서 보내줄 데이터의 타입
 }) // HTTP 요청이 성공하면 요청한 데이터가 done() 메소드로 전달됨. 
@@ -153,7 +146,7 @@ $.ajax({
 		console.log(json);
 		var html = '';
 		for (var i in json) {
-			html += '<li>' + json[i].ctpKorNm + '</li>';
+			html += '<li data-lat="' + json[i].lat + '" data-lon="' + json[i].lon + '">' + json[i].brName + '</li>';
 			$('#ajpage').find('ul').html(html);
 		}
 	})
@@ -162,26 +155,30 @@ $.ajax({
 		$("#text").html("오류가 발생했다.<br>")
 			.append("오류명: " + errorThrown + "<br>")
 			.append("상태: " + status);
-	}) // 
+	}) 
 	.always(function(xhr, status) {
 		$("#text").html("요청이 완료되었습니다!");
 	});
 
 
-$('#area').on('click', 'li', function() {
+$('#area').on('click', 'li', function() {	
 	var view = map.getView();
 	var zoom = view.getZoom();
-	view.setZoom(zoom + 1);
-	$(this).text();
+	
+	var rentalLat = $(this).data('lat');
+	var rentalLon = $(this).data('lon');
+	
+	var center = ol.proj.transform([rentalLon, rentalLat], 'EPSG:4326','EPSG:3857');
+	map.getView().setCenter(center);
+	view.setZoom(15);
 
+	console.log($(this).data());
 	console.log($(this).text());
-
-
-
+	
 });
 
 
-function pageAction() {
+/*function pageAction() {
 	$('#getInfo').show()
-}
-
+}*/
+$(function (){ $("#pgActionbtn").click(function (){ $("#getInfo").toggle(); }); });

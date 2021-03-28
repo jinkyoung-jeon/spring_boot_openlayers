@@ -18,16 +18,6 @@ import com.example.demo.service.BikeService;
 @RequestMapping("/bike")
 public class BikeController {
 	
-	@GetMapping("/home")
-	public String main() {
-		return "index.html";
-	}
-	
-	@GetMapping("/info_pop")
-	public String home() {
-		return "info_pop_main.html";
-	}
-	
 	@Autowired
 	BikeService bikeService;
 	
